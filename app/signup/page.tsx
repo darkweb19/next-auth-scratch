@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function SignUpForm() {
 	const router = useRouter();
@@ -25,16 +26,15 @@ export default function SignUpForm() {
 			setLoading(true);
 			e.preventDefault();
 			// Add your signup logic here, using formData
-			console.log("Form submitted with data:", formData);
-			const response = await axios.post("/api/user/signup", formData);
-			console.log(response.data.success);
 
-			// Reset form after submission
+			const response = await axios.post("/api/user/signup", formData);
 
 			if (response.data.success) {
-				setLoading(false);
+				router.push("/login");
+				toast.success("Signed Up Success");
+			} else {
+				toast.error(response.data.message);
 			}
-			router.push("/login");
 		} catch (err: any) {
 			console.log(err.message);
 		} finally {
@@ -48,7 +48,7 @@ export default function SignUpForm() {
 	};
 
 	return (
-		<div className="h-screen w-full flex items-center">
+		<div className="min-h-screen w-full p-3 flex items-center">
 			<form
 				className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
 				onSubmit={handleSubmit}
