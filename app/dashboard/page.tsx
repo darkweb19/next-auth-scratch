@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function dashboard() {
+export default function DashboardPage() {
 	const router = useRouter();
 	const [user, setUser] = useState<User>();
 	console.log(user);
