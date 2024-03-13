@@ -1,4 +1,32 @@
+"use client";
+
+import { User } from "@prisma/client";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 export default function dashboard() {
+	const router = useRouter();
+	const [user, setUser] = useState<User>();
+	console.log(user);
+
+	useEffect(() => {
+		const getUser = async () => {
+			const response = await axios.get("/api/user");
+			const user: User = response.data.userinDb;
+			setUser(user);
+		};
+		getUser();
+	}, []);
+
+	const handleLogout = async () => {
+		try {
+			const response = await axios.get("/api/user/logout");
+			if (response.data.success) router.push("/");
+		} catch (error: any) {
+			console.log(error.message);
+		}
+	};
 	return (
 		<div>
 			<div className="flex h-screen bg-gray-100">
@@ -22,7 +50,10 @@ export default function dashboard() {
 							</button>
 						</li>
 						<li>
-							<button className="w-full p-2 bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none">
+							<button
+								onClick={handleLogout}
+								className="w-full p-2 bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none"
+							>
 								Logout
 							</button>
 						</li>
@@ -35,8 +66,7 @@ export default function dashboard() {
 						Welcome to the Dashboard
 					</h2>
 					<p className="text-gray-600">
-						This is the middle content area. Add something nice
-						here!
+						This is the middle content area. Hello {user?.username}
 					</p>
 				</div>
 

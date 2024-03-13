@@ -3,6 +3,12 @@ import bcryptjs from "bcryptjs";
 import prisma from "@/utils/Prisma";
 import jwt from "jsonwebtoken";
 
+export interface TokenPayload {
+	id: string;
+	email: string;
+	username: string | null;
+}
+
 export async function POST(req: NextRequest) {
 	try {
 		const { email, password } = await req.json();
@@ -23,14 +29,14 @@ export async function POST(req: NextRequest) {
 			});
 
 		//create the token data
-		const tokenData = {
+		const tokenData: TokenPayload = {
 			id: user.id,
 			email: user.email,
 			username: user.username,
 		};
 
 		//now assign the user with the token
-		const token = await jwt.sign(tokenData, process.env.TOKEN_KEY!, {
+		const token = jwt.sign(tokenData, process.env.TOKEN_KEY!, {
 			expiresIn: "1d",
 		});
 
