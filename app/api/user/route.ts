@@ -9,7 +9,6 @@ export async function GET(req: NextRequest) {
 
 	//decode
 	const decode = jwt.verify(token, process.env.TOKEN_KEY!) as TokenPayload;
-	console.log(decode);
 
 	//find user in database
 	const userId = decode.id;

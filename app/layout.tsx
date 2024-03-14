@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={`${inter.className} text-black`}>
 				{/* Navbar */}
 				<nav className="bg-gray-800 text-white p-4">
 					<div className="container mx-auto flex justify-between items-center">
@@ -36,6 +36,7 @@ export default function RootLayout({
 						</div>
 					</div>
 				</nav>
+
 				{children}
 
 				{/* Footer */}
