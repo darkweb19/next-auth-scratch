@@ -1,6 +1,7 @@
 import prisma from "@/utils/Prisma";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypjs from "bcryptjs";
+import { sendMail } from "@/utils/mailer";
 
 export async function POST(req: NextRequest) {
 	try {
@@ -22,6 +23,8 @@ export async function POST(req: NextRequest) {
 			},
 		});
 		console.log(dbUser);
+
+		await sendMail({ email });
 
 		return NextResponse.json({
 			success: true,
