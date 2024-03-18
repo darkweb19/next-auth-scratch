@@ -37,7 +37,7 @@ export const sendMail = async ({ email }: { email: string }) => {
     <p style="color: #666666;">If you have any questions, concerns, or just want to say hello, feel free to reach out to us at <a href="mailto:me@sujansthadev.com.np" style="color: #007bff; text-decoration: none;"><span style="color: #4CAF50;">me@sujansthadev.com.np</span></a>. We're here for you!</p>
     <p style="color: #666666;">Once again, welcome to the family!</p>
     <p style="color: #666666;">Thank You so much for signing up.</p>
-    <p style="color: #666666;">Best regards,<br><span style="color: #4CAF50;">Sujan Shrestha</span></p>
+    <p style="color: #666666;">Best regards,<br><a href="https://sujansthadev.com.np" style="color: #4CAF50;">Sujan Shrestha</a></p>
 </div>
 
 </body>
@@ -45,12 +45,12 @@ export const sendMail = async ({ email }: { email: string }) => {
 `,
 		};
 
-		const res = await transport.sendMail(mailing);
-		// transport.verify((error, success) => {
-		//     if(success)
-		// });
-		console.log("Mailing send", res.messageId);
+		await transport.sendMail(mailing);
+		transport.verify((error, success) => {
+			if (success) return { success: true };
+		});
 	} catch (error: any) {
 		console.log(error.message);
+		return { success: false };
 	}
 };

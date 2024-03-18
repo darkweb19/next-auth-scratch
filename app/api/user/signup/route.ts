@@ -24,7 +24,11 @@ export async function POST(req: NextRequest) {
 		});
 		console.log(dbUser);
 
-		await sendMail({ email });
+		const success = await sendMail({ email });
+
+		if (!success) {
+			throw Error("Mail cannot be send. Problem in mailing system");
+		}
 
 		return NextResponse.json({
 			success: true,
