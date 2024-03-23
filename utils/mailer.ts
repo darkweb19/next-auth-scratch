@@ -47,8 +47,12 @@ export const sendMail = async ({ email }: { email: string }) => {
 
 		await transport.sendMail(mailing);
 		transport.verify((error, success) => {
-			if (success) return { success: true };
+			if (error) {
+				console.log("mail send", success);
+				throw new Error(error.message);
+			}
 		});
+		return { success: true };
 	} catch (error: any) {
 		console.log(error.message);
 		return { success: false };
