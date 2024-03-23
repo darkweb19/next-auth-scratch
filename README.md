@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Finance Manager
 
-## Getting Started
+## Overview:
 
-First, run the development server:
+Finance Manager is a web-based application designed to help individuals effectively manage their personal finances. With features such as expense tracking, income management, budgeting, and insightful analytics, Finance Manager empowers users to take control of their financial health and make informed decisions about their money.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Problem it Solves:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Managing personal finances can be a daunting task, especially with multiple income sources, expenses, and financial goals to track. Traditional methods of manual budgeting and expense tracking often prove to be time-consuming and prone to errors. Finance Manager solves these challenges by providing users with a centralized platform to easily track income, monitor expenses, set budgets, and gain valuable insights into their financial habits.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-   **Dashboard**: Provides users with an overview of their financial status, including account balances, income, expenses, and financial goals.
+-   **Expense Tracking**: Allows users to categorize and track their expenses, providing insights into spending patterns and helping identify areas for optimization.
+-   **Income Management**: Enables users to track various sources of income, such as salaries, bonuses, investments, and other revenue streams.
+-   **Budgeting**: Assists users in creating and managing budgets for different spending categories, helping them stay within their means and achieve financial goals.
+-   **Reports and Analytics**: Generates detailed reports and analytics to help users understand their financial habits, identify areas for improvement, and make informed decisions about their finances.
 
-## Learn More
+## Preview:
 
-To learn more about Next.js, take a look at the following resources:
+You can preview the Finance Manager application [here](https://next-auth-scratch.vercel.app/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## More Details:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For more details and project documentation, please refer to the [Notion page](https://www.notion.so/darkweb19/Finance-Manager-0ad0e25ea6b741439d2439d7cc1b912c?pvs=4).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Finance Manager aims to simplify the process of personal finance management and empower users to achieve their financial goals with confidence.
