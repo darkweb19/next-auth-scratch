@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 export default function SignUpForm() {
 	const router = useRouter();
 	const [formData, setFormData] = useState({
@@ -53,48 +57,51 @@ export default function SignUpForm() {
 				className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
 				onSubmit={handleSubmit}
 			>
-				<label className="block mb-2 text-sm text-gray-600">
+				<Label >
 					Username:
-					<input
-						className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+					<Input
+						
 						type="text"
 						name="username"
 						value={formData.username}
 						onChange={handleChange}
 						required
+						
 					/>
-				</label>
+				</Label>
 
-				<label className="block mb-2 text-sm text-gray-600">
+				<Label >
 					Email:
-					<input
-						className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+					<Input
+						
 						type="email"
 						name="email"
 						value={formData.email}
 						onChange={handleChange}
 						required
 					/>
-				</label>
+				</Label>
 
-				<label className="block mb-2 text-sm text-gray-600">
+				<Label >
 					Password:
-					<input
-						className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+					<Input
+						
 						type="password"
 						name="password"
 						value={formData.password}
 						onChange={handleChange}
 						required
 					/>
-				</label>
+				</Label>
+				<br />
 
-				<button
-					className="w-full px-4 py-2 mt-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+				<Button
+					
 					type="submit"
 				>
+					
 					{loading ? "adding..." : "signup"}
-				</button>
+				</Button>
 			</form>
 		</div>
 	);

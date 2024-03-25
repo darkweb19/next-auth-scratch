@@ -4,6 +4,14 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+
+
+
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+ 
+import { Button } from "@/components/ui/button"
+
 export default function LoginPage() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
@@ -49,38 +57,39 @@ export default function LoginPage() {
 			>
 				<h2 className="text-2xl font-semibold mb-6">Login</h2>
 
-				<label className="block mb-4 text-sm text-gray-600">
+				<Label >
 					Email:
-					<input
-						className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+					<Input
+						
 						type="email"
 						name="email"
 						value={formData.email}
 						onChange={handleChange}
 						required
 					/>
-				</label>
+				</Label>
 
-				<label className="block mb-4 text-sm text-gray-600">
+				<Label >
 					Password:
-					<input
-						className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+					<Input
+						
 						type="password"
 						name="password"
 						value={formData.password}
 						onChange={handleChange}
 						required
 					/>
-				</label>
+				</Label>
+				<br />
 
 				{/* Button with loading spinner */}
-				<button
-					className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 relative"
+				<Button 
+					
 					type="submit"
 					disabled={loading}
 				>
 					{loading ? "Logging..." : "Log in"}
-				</button>
+				</Button>
 			</form>
 		</div>
 	);
