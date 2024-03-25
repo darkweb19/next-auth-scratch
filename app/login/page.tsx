@@ -4,13 +4,10 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-
-
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
- 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -50,17 +47,16 @@ export default function LoginPage() {
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center">
+		<div className="h-full flex items-center justify-center">
 			<form
 				className="max-w-md p-6 bg-white shadow-md rounded-md"
 				onSubmit={handleSubmit}
 			>
 				<h2 className="text-2xl font-semibold mb-6">Login</h2>
 
-				<Label >
+				<Label>
 					Email:
 					<Input
-						
 						type="email"
 						name="email"
 						value={formData.email}
@@ -69,10 +65,9 @@ export default function LoginPage() {
 					/>
 				</Label>
 
-				<Label >
+				<Label>
 					Password:
 					<Input
-						
 						type="password"
 						name="password"
 						value={formData.password}
@@ -83,11 +78,7 @@ export default function LoginPage() {
 				<br />
 
 				{/* Button with loading spinner */}
-				<Button 
-					
-					type="submit"
-					disabled={loading}
-				>
+				<Button type="submit" disabled={loading}>
 					{loading ? "Logging..." : "Log in"}
 				</Button>
 			</form>
