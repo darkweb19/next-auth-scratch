@@ -17,7 +17,7 @@ export const sendMail = async ({ email }: { email: string }) => {
 			},
 		});
 		const mailing = {
-			from: "hello  <hello@sujansthadev.com.np>",
+			from: "Sujan Shrestha  <me@sujansthadev.com.np>",
 			to: email,
 			subject: "Greetings.....",
 			html: `<!DOCTYPE html>
