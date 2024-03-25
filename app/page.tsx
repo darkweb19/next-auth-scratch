@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button"
+
+
+
 
 export default function HomePage() {
 	return (
@@ -14,7 +18,7 @@ export default function HomePage() {
 					</p>
 					<Link
 						href="/signup"
-						className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300"
+						className={buttonVariants({ variant: "outline" })}
 					>
 						Get Started
 					</Link>
