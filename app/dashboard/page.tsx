@@ -16,7 +16,7 @@ export default function DashboardPage() {
 	}, []);
 
 	return (
-		<div className="w-2/3 p-4 bg-white">
+		<div className="p-4 bg-white">
 			<h2 className="text-2xl font-semibold mb-4">
 				Welcome to the Dashboard
 			</h2>
