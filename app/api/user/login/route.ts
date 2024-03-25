@@ -17,16 +17,17 @@ export async function POST(req: NextRequest) {
 		if (!user) {
 			return NextResponse.json({
 				success: false,
-				error: "User doesn't exists",
+				message: "User doesn't exists",
 			});
 		}
 		const isValidPass = await bcryptjs.compare(password, user.password);
 
-		if (!isValidPass)
+		if (!isValidPass) {
 			return NextResponse.json({
 				success: false,
 				message: "Invalid Password",
 			});
+		}
 
 		//create the token data
 		const tokenData: TokenPayload = {
@@ -47,6 +48,7 @@ export async function POST(req: NextRequest) {
 		response.cookies.set("token", token, { httpOnly: true });
 		return response;
 	} catch (error: any) {
+		console.log(error.message);
 		return NextResponse.json({ success: false, error: error.message });
 	}
 }

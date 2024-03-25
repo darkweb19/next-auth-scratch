@@ -33,9 +33,12 @@ export default function LoginPage() {
 			if (response.data.success) {
 				toast.success("Login Success");
 				router.push("/dashboard");
+			} else {
+				toast.error(response.data.message);
 			}
 		} catch (error: any) {
 			console.log("Error logging in");
+			toast.error(`Client Side Error ${error.message}`);
 		} finally {
 			// Reset form after submission
 			setFormData({
