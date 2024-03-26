@@ -18,7 +18,7 @@ export default function AppNavbar() {
         </NavbarItem>
         <NavbarItem>
         <Link href="/signup">
-            <Button className="hover:text-gray-300" color="primary" bordered rounded>
+            <Button className="hover:text-gray-300" color="primary" >
               Signup
             </Button>
           </Link>
