@@ -18,9 +18,9 @@ export default function RootLayout({
 		}
 	};
 	return (
-		<div className="flex h-screen bg-gray-100">
+		<div className="flex h-full bg-gray-100">
 			{/* Left Sidebar */}
-			<div className="w-1/6 bg-gray-800 text-white p-4">
+			<div className="w-2/6 sm:w-1/6 bg-gray-800 text-white p-4">
 				<h1 className="text-2xl font-bold mb-4">Dashboard</h1>
 				<ul className="space-y-2">
 					<li>
@@ -59,10 +59,10 @@ export default function RootLayout({
 			</div>
 
 			{/* Middle Content */}
-			{children}
+			<main className="flex-1 overflow-y-aut">{children}</main>
 
 			{/* Right Sidebar */}
-			<div className="w-1/6 p-4 bg-gray-200">
+			<div className="hidden sm:block w-1/6 p-4 bg-gray-200">
 				<h3 className="text-lg font-semibold mb-2">Page Views</h3>
 				<p className="text-gray-600">Total views: 100,000</p>
 			</div>

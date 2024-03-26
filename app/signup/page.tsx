@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function SignUpForm() {
 	const router = useRouter();
@@ -52,28 +52,25 @@ export default function SignUpForm() {
 	};
 
 	return (
-		<div className="min-h-screen w-full p-3 flex items-center">
+		<div className="min-h-full border border-black w-full p-3 flex items-center">
 			<form
 				className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
 				onSubmit={handleSubmit}
 			>
-				<Label >
+				<Label>
 					Username:
 					<Input
-						
 						type="text"
 						name="username"
 						value={formData.username}
 						onChange={handleChange}
 						required
-						
 					/>
 				</Label>
 
-				<Label >
+				<Label>
 					Email:
 					<Input
-						
 						type="email"
 						name="email"
 						value={formData.email}
@@ -82,10 +79,9 @@ export default function SignUpForm() {
 					/>
 				</Label>
 
-				<Label >
+				<Label>
 					Password:
 					<Input
-						
 						type="password"
 						name="password"
 						value={formData.password}
@@ -95,11 +91,7 @@ export default function SignUpForm() {
 				</Label>
 				<br />
 
-				<Button
-					
-					type="submit"
-				>
-					
+				<Button type="submit">
 					{loading ? "adding..." : "signup"}
 				</Button>
 			</form>

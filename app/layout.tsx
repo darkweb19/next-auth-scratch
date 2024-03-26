@@ -18,11 +18,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} text-black`}>
+			<body
+				className={`${inter.className} text-black flex flex-col h-screen`}
+			>
 				<Navbar />
-
-				{children}
-
+				<main className="flex-1 overflow-y-auto">{children}</main>
 				{/* Footer */}
 				<footer className="bg-gray-800 text-white text-center py-4">
 					<p>&copy; 2024 Your Website. All rights reserved.</p>
