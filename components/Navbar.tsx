@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function Navbar() {
 	return (
 		<nav className="bg-gray-800 text-white p-4">
+			{/* next ui here  */}
 			<div className="container mx-auto flex justify-between items-center">
 				<div className="text-2xl font-bold">Your Logo</div>
 
