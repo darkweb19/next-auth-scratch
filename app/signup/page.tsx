@@ -54,7 +54,7 @@ export default function SignUpForm() {
 	return (
 		<div className="min-h-full border border-black w-full p-3 flex items-center">
 			<form
-				className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
+				className="max-w-md mx-auto p-4 shadow-md rounded-md"
 				onSubmit={handleSubmit}
 			>
 				<Label>

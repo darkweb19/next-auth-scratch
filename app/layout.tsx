@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/utils/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +20,23 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${inter.className} text-black flex flex-col h-screen`}
+				suppressHydrationWarning={true}
+				className={`${inter.className} flex flex-col h-screen`}
 			>
-				<Navbar />
-				<main className="flex-1 overflow-y-auto">{children}</main>
-				{/* Footer */}
-				<footer className="bg-gray-800 text-white text-center py-4">
-					<p>&copy; 2024 Your Website. All rights reserved.</p>
-				</footer>
-				<Toaster />
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<Navbar />
+					<main className="flex-1 overflow-y-auto">{children}</main>
+					{/* Footer */}
+					<footer className="bg-gray-800 text-white text-center py-4">
+						<p>&copy; 2024 Your Website. All rights reserved.</p>
+					</footer>
+					<Toaster />
+				</ThemeProvider>
 			</body>
 		</html>
 	);
