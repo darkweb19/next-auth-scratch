@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link,NextUIProvider } from "@nextui-org/react";
 import {Button} from '@nextui-org/button'; 
 
+
 export default function AppNavbar() {
   return (
     <Navbar className="bg-gray-800 text-white p-4">
