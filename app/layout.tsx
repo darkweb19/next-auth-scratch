@@ -25,12 +25,14 @@ export default function RootLayout({
 			>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
+					defaultTheme="light"
 					enableSystem
 					disableTransitionOnChange
 				>
 					<Navbar />
-					<main className="flex-1 overflow-y-auto">{children}</main>
+					<main className="flex-1 overflow-y-auto  text-black dark:text-white bg-white dark:bg-black">
+						{children}
+					</main>
 					{/* Footer */}
 					<footer className="bg-gray-800 text-white text-center py-4">
 						<p>&copy; 2024 Your Website. All rights reserved.</p>

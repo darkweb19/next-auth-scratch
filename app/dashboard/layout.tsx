@@ -18,9 +18,9 @@ export default function RootLayout({
 		}
 	};
 	return (
-		<section className="flex h-full p-4 bg-[#EAEDF4] dark:bg-black">
+		<section className="flex h-full p-4 bg-[#EAEDF4] dark:bg-black text-black dark:text-white">
 			{/* Left Sidebar */}
-			<div className="w-2/6 sm:w-1/6 p-4 rounded-lg bg-white dark:bg-black flex flex-col justify-between border border-r-2  dark:border-r-slate-600">
+			<div className="w-2/6 sm:w-1/6 p-4 rounded-lg bg-white dark:bg-black  flex flex-col justify-between dark:border dark:border-slate-600">
 				<div>
 					<h1 className="text-2xl font-bold mb-4">Dashboard</h1>
 					<ul className="space-y-2 font-medium">
@@ -62,7 +62,7 @@ export default function RootLayout({
 			<main className="flex-1 overflow-y-auto">{children}</main>
 
 			{/* Right Sidebar */}
-			<div className="hidden sm:block w-1/6 p-4 border border-l-2  rounded-lg bg-white dark:bg-black dark:border-r-slate-600">
+			<div className="hidden sm:block w-1/6 p-4 dark:border  rounded-lg bg-white dark:bg-black dark:border-slate-600">
 				<h3 className="text-lg font-semibold mb-2">Page Views</h3>
 				<p className="">Total views: 100,000</p>
 			</div>

@@ -18,7 +18,7 @@ export function ModeToggle() {
 				<Button variant="outline" size="icon">
 					{theme === "dark" ? (
 						<Moon
-							color="white"
+							color="black"
 							className="rotate-0 scale-100 transition-all"
 						/>
 					) : (
