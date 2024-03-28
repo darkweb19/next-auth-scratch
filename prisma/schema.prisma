@@ -22,5 +22,27 @@ model User {
   verifyToken String?
   verifyTokenExpiry DateTime?
 
-
 }
+
+model Account{
+  id String @id @default(uuid())
+  userId String
+  accountType String //checing,savings
+  balance Float
+}
+model Transaction {
+  id   String   @id @default(uuid())
+  type  String //deposit, deposit,transfer
+  amount Float
+  transactionDate DateTime @default(now())
+  
+}
+model Expense {
+  id             String    @id @default(uuid())
+  amount         Float
+  description    String?
+  category       String    // e.g., "Food", "Transportation", "Entertainment"
+  date           DateTime  @default(now())
+  userId         String    // Foreign key referencing User.id
+}
+
