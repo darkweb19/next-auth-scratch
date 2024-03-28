@@ -1,20 +1,31 @@
-import Link from "next/link";
+import React from "react";
+import {
+	Navbar,
+	NavbarBrand,
+	NavbarContent,
+	NavbarItem,
+	Link,
+} from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
 
-export default function Navbar() {
+export default function AppNavbar() {
 	return (
-		<nav className="bg-gray-800 text-white p-4">
-			<div className="container mx-auto flex justify-between items-center">
-				<div className="text-2xl font-bold">Your Logo</div>
-
-				<div className="flex space-x-4">
-					<Link href="/login" className="hover:text-gray-300">
-						Login
+		<Navbar isBlurred isBordered>
+			<NavbarBrand>
+				<p className="text-2xl font-bold">Your Logo</p>
+			</NavbarBrand>
+			<NavbarContent justify="end">
+				<NavbarItem>
+					<Link href="/login">
+						<Button className="hover:bg-slate-300">Login</Button>
 					</Link>
-					<Link href="/signup" className="hover:text-gray-300">
-						Signup
+				</NavbarItem>
+				<NavbarItem>
+					<Link href="/signup">
+						<Button className="hover:bg-slate-300">Signup</Button>
 					</Link>
-				</div>
-			</div>
-		</nav>
+				</NavbarItem>
+			</NavbarContent>
+		</Navbar>
 	);
 }
