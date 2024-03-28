@@ -27,7 +27,7 @@ export default function RootLayout({
 			{/* Left Sidebar */}
 			<div className="w-2/6 sm:w-1/6 h-full border-r flex flex-col justify-between border-gray-200 text-black p-3">
 				<div className="p-3">
-					<h1 className="text-lg p-0 text-start font-medium ">
+					<h1 className="text-lg px-2 text-start font-medium ">
 						Dashboard
 					</h1>
 
