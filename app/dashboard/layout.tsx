@@ -3,7 +3,6 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { PiSignOutFill } from "react-icons/pi";
-import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandGoogleAnalytics, TbPigMoney } from "react-icons/tb";
 import { GrTransaction } from "react-icons/gr";
 import { FaArrowTrendUp } from "react-icons/fa6";
@@ -35,7 +34,7 @@ export default function RootLayout({
 					<ul className="space-y-2">
 						<li>
 							<Link
-								href="/dashboard/analytics"
+								href="/dashboard/admin"
 								className="w-full p-2 flex items-center justify-start gap-3 rounded-md hover:bg-slate-100 focus:outline-none  text-start"
 							>
 								<span className="text-xl">
