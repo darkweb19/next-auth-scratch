@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
-import { TokenPayload } from "@/app/api/user/login/route";
+import { TokenPayload } from "@/app/api/user/(authentication)/login/route";
 import prisma from "@/utils/Prisma";
 
 export async function GET(req: NextRequest) {
