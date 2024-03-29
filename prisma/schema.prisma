@@ -27,7 +27,7 @@ model User {
 model Card {
   id        Int     @id @default(autoincrement())
   card_name String
-  card_number Int
+  card_number Int @unique
   bank_name String
   user    User    @relation(fields: [authorId], references: [id])
   authorId  String
