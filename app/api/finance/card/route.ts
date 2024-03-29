@@ -4,19 +4,28 @@ import { TokenPayload } from "../../user/(authentication)/login/route";
 import prisma from "@/utils/Prisma";
 
 export async function GET(req: NextRequest) {
-	//get token from cookie if user is logged in
-	const token = req.cookies.get("token")?.value || "";
-	console.log(token);
+	try {
+		//get token from cookie if user is logged in
+		const token = req.cookies.get("token")?.value || "";
+		console.log(token);
 
-	//decode and find the id from token payload
-	const decode = jwt.verify(token, process.env.TOKEN_KEY!) as TokenPayload;
+		//decode and find the id from token payload
+		const decode = jwt.verify(
+			token,
+			process.env.TOKEN_KEY!
+		) as TokenPayload;
 
-	//search user in db using userid
-	const userid = decode.id;
-	const card = await prisma.card.findMany({ where: { authorId: userid } });
-	console.log(card);
+		//search user in db using userid
+		const userid = decode.id;
+		const card = await prisma.card.findMany({
+			where: { authorId: userid },
+		});
+		console.log(card);
 
-	return NextResponse.json({ success: true, cards: card });
+		return NextResponse.json({ success: true, cards: card });
+	} catch (err: any) {
+		NextResponse.json({ success: false, message: err.message });
+	}
 }
 
 export async function POST(req: NextRequest) {
