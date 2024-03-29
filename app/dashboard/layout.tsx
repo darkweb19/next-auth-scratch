@@ -7,6 +7,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandGoogleAnalytics, TbPigMoney } from "react-icons/tb";
 import { GrTransaction } from "react-icons/gr";
 import { FaArrowTrendUp } from "react-icons/fa6";
+import { BsPerson } from "react-icons/bs";
 
 export default function RootLayout({
 	children,
@@ -38,11 +39,23 @@ export default function RootLayout({
 								className="w-full p-2 flex items-center justify-start gap-3 rounded-md hover:bg-slate-100 focus:outline-none  text-start"
 							>
 								<span className="text-xl">
+									<BsPerson />
+								</span>
+								Admin
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/dashboard/analytics"
+								className="w-full p-2 flex items-center justify-start gap-3 rounded-md hover:bg-slate-100 focus:outline-none  text-start"
+							>
+								<span className="text-xl">
 									<TbBrandGoogleAnalytics />
 								</span>
 								Analytics
 							</Link>
 						</li>
+
 						<li>
 							<Link
 								href="/dashboard/finance"
