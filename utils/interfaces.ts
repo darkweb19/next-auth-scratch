@@ -36,7 +36,7 @@ export interface CardResponse {
 		bank_name: string;
 		authorId: string;
 		card_type: string | null;
-		expiryDate: Date;
+		expiryDate: String;
 	}[];
 }
 

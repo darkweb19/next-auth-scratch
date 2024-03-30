@@ -34,6 +34,12 @@ export async function GET(req: NextRequest) {
 		const serializedCards = card.map((card) => ({
 			...card,
 			card_number: card.card_number.toString(), // Convert BigInt to string
+			expiryDate: `${(card.expiryDate.getMonth() + 1) //convert from isoString to normal format as it comes from frontend
+				.toString()
+				.padStart(2, "0")}/${card.expiryDate
+				.getFullYear()
+				.toString()
+				.slice(-2)}`,
 		}));
 
 		const serializedCardsArray = Object.values(serializedCards);
@@ -79,7 +85,7 @@ export async function POST(req: NextRequest) {
 			bankName,
 			cardNumber,
 			cardType,
-			expiryDate,
+			expiryDate, //! "09/26" is date format => from frontend
 		}: CardRequest = await req.json();
 
 		const is_card_exist = await prisma.card.findFirst({
@@ -95,8 +101,8 @@ export async function POST(req: NextRequest) {
 		}
 
 		//this is for converting date into ISO Standard date since prisma supports this...
-		const [month, year] = "02/25".split("/").map(Number);
-		const date = new Date(year, month - 1, 1);
+		const [month, year] = "08/28".split("/").map(Number);
+		const date = new Date(Number("20" + year), month - 1);
 		const isoStringDate = date.toISOString();
 
 		//!adding card into the database
