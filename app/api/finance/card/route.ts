@@ -30,13 +30,22 @@ export async function GET(req: NextRequest) {
 		});
 		console.log(card);
 
+		//! since card number is BigInt , while fetching it shows error : So we convert it to string
+		const serializedCards = card.map((card) => ({
+			...card,
+			card_number: card.card_number.toString(), // Convert BigInt to string
+		}));
+
+		const serializedCardsArray = Object.values(serializedCards);
+
+		//returns the cards
 		return NextResponse.json<CardResponse>({
 			success: true,
-			cards: card,
+			cards: serializedCardsArray,
 			token,
 		});
 	} catch (err: any) {
-		return NextResponse.json<CardResponse>({
+		return NextResponse.json({
 			success: false,
 			message: err.message,
 		});

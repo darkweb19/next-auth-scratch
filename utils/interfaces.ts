@@ -28,8 +28,16 @@ export interface CreateCardRequest {
 export interface CardResponse {
 	success: boolean;
 	message?: string;
-	cards?: Card[];
 	token?: string;
+	cards?: {
+		id: number;
+		card_name: string;
+		card_number: string; // Change type to string
+		bank_name: string;
+		authorId: string;
+		card_type: string | null;
+		expiryDate: Date;
+	}[];
 }
 
 export interface CardRequest {
