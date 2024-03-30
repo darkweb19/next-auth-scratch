@@ -2,16 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import prisma from "@/utils/Prisma";
 import jwt from "jsonwebtoken";
-
-export interface TokenPayload {
-	id: string;
-	email: string;
-	username: string | null;
-}
+import { LoginFormData, TokenPayload } from "@/utils/interfaces";
 
 export async function POST(req: NextRequest) {
 	try {
-		const { email, password } = await req.json();
+		const { email, password }: LoginFormData = await req.json();
 		//check if the user exists
 		const user = await prisma.user.findUnique({ where: { email } });
 		if (!user) {

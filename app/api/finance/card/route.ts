@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import { TokenPayload } from "../../user/(authentication)/login/route";
 import prisma from "@/utils/Prisma";
+import { CardRequest, CardResponse, TokenPayload } from "@/utils/interfaces";
 
 export async function GET(req: NextRequest) {
 	try {
@@ -30,9 +30,16 @@ export async function GET(req: NextRequest) {
 		});
 		console.log(card);
 
-		return NextResponse.json({ success: true, cards: card, token });
+		return NextResponse.json<CardResponse>({
+			success: true,
+			cards: card,
+			token,
+		});
 	} catch (err: any) {
-		return NextResponse.json({ success: false, message: err.message });
+		return NextResponse.json<CardResponse>({
+			success: false,
+			message: err.message,
+		});
 	}
 }
 
@@ -58,15 +65,20 @@ export async function POST(req: NextRequest) {
 		//search user in db using userid
 		const userid = decode.id;
 
-		const { cardName, bankName, cardNumber, cardType, expiryDate } =
-			await req.json();
+		const {
+			cardName,
+			bankName,
+			cardNumber,
+			cardType,
+			expiryDate,
+		}: CardRequest = await req.json();
 
 		const is_card_exist = await prisma.card.findFirst({
 			where: { card_number: cardNumber },
 		});
 
 		if (is_card_exist?.card_number) {
-			console.log("Card already exists");
+			console.log("Card already exists", is_card_exist.card_number);
 			return NextResponse.json({
 				success: false,
 				message: "Card already exists",
@@ -83,7 +95,7 @@ export async function POST(req: NextRequest) {
 			data: {
 				card_name: "Sujan Shrestha",
 				bank_name: "NIMB",
-				card_number: 123213121,
+				card_number: cardNumber, //! hard coded everything for testing purpose
 				card_type: "Debit",
 				expiryDate: isoStringDate,
 				user: {
@@ -93,12 +105,15 @@ export async function POST(req: NextRequest) {
 		});
 
 		console.log("Card created id :", card.id);
-		return NextResponse.json({
+		return NextResponse.json<CardResponse>({
 			success: true,
 			message: "Card added successfully",
 		});
 	} catch (error: any) {
 		console.log(error.message);
-		return NextResponse.json({ success: false, message: error.message });
+		return NextResponse.json<CardResponse>({
+			success: false,
+			message: error.message,
+		});
 	}
 }

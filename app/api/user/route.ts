@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
-import { TokenPayload } from "@/app/api/user/(authentication)/login/route";
+
 import prisma from "@/utils/Prisma";
+import { TokenPayload } from "@/utils/interfaces";
 
 export async function GET(req: NextRequest) {
 	//token

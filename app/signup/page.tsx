@@ -3,14 +3,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SignupFormData } from "@/utils/interfaces";
 
 export default function SignUpForm() {
 	const router = useRouter();
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<SignupFormData>({
 		username: "",
 		email: "",
 		password: "",
