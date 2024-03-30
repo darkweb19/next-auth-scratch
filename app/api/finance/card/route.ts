@@ -48,7 +48,6 @@ export async function GET(req: NextRequest) {
 		return NextResponse.json<CardResponse>({
 			success: true,
 			cards: serializedCardsArray,
-			token,
 		});
 	} catch (err: any) {
 		return NextResponse.json({
