@@ -100,17 +100,17 @@ export async function POST(req: NextRequest) {
 		}
 
 		//this is for converting date into ISO Standard date since prisma supports this...
-		const [month, year] = "08/28".split("/").map(Number);
+		const [month, year] = expiryDate.split("/").map(Number);
 		const date = new Date(Number("20" + year), month - 1);
 		const isoStringDate = date.toISOString();
 
 		//!adding card into the database
 		const card = await prisma.card.create({
 			data: {
-				card_name: "Sujan Shrestha",
-				bank_name: "NIMB",
+				card_name: cardName,
+				bank_name: bankName,
 				card_number: cardNumber, //! hard coded everything for testing purpose
-				card_type: "Debit",
+				card_type: cardType,
 				expiryDate: isoStringDate,
 				user: {
 					connect: { id: userid },
@@ -129,5 +129,48 @@ export async function POST(req: NextRequest) {
 			success: false,
 			message: error.message,
 		});
+	}
+}
+
+export async function DELETE(req: NextRequest) {
+	try {
+		const token = req.cookies.get("token")?.value || "";
+
+		//!Check if user is logged in or not
+		if (!token) {
+			console.log("user must be logged in first");
+			return NextResponse.json({
+				success: false,
+				message: "User must be logged in first.",
+			});
+		}
+
+		const { cardNumber } = await req.json();
+
+		//check whether card exists or not
+		const is_card_exist = await prisma.card.findFirst({
+			where: { card_number: cardNumber },
+		});
+
+		if (!is_card_exist?.card_number) {
+			console.log("Card Does Not exists");
+			return NextResponse.json({
+				success: false,
+				message: "Card Does not exists",
+			});
+		}
+
+		await prisma.card.delete({
+			where: { card_number: cardNumber },
+		});
+
+		console.log("card deleted successfully");
+		return NextResponse.json({
+			success: true,
+			message: "Card deleted successfully",
+		});
+	} catch (err: any) {
+		console.log(err.message);
+		return NextResponse.json({ success: false, message: err.message });
 	}
 }
