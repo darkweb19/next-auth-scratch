@@ -148,7 +148,7 @@ export async function DELETE(req: NextRequest) {
 		const { cardNumber } = await req.json();
 
 		//check whether card exists or not
-		const is_card_exist = await prisma.card.findFirst({
+		const is_card_exist = await prisma.card.findUnique({
 			where: { card_number: cardNumber },
 		});
 
