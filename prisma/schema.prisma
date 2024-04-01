@@ -42,6 +42,7 @@ model BankDetails {
   id          String      @id @default(uuid())
   bank_name   String
   bank_branch String?
+  bank_balance Int 
   acc_number  BigInt @unique
   acc_type    String
   open_date   DateTime    @default(now())
