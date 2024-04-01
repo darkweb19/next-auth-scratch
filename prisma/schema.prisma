@@ -42,7 +42,7 @@ model BankDetails {
   id          String      @id @default(uuid())
   bank_name   String
   bank_branch String?
-  acc_number  BigInt
+  acc_number  BigInt @unique
   acc_type    String
   open_date   DateTime    @default(now())
   user        User?       @relation(fields: [user_id], references: [id])
