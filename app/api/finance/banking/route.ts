@@ -95,11 +95,11 @@ export async function POST(req: NextRequest) {
 		//!Add to the database if not exists
 		const bankDetails = await prisma.bankDetails.create({
 			data: {
-				bank_name: "NIMB",
-				// bank_branch: "Itahari",
+				bank_name: bankName,
+				bank_branch: bankBranch,
 				acc_number: accNumber,
-				acc_type: "savings",
-				bank_balance: 12321,
+				acc_type: accType,
+				bank_balance: bankBalance,
 				user: {
 					connect: {
 						id: userid,
