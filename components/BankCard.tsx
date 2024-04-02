@@ -10,7 +10,6 @@ export default function BankCard() {
     // Fetch card data from backend
     const fetchCard = async () => {
       const card = await axios.get("/api/finance/card");
-      // console.log(card.data.cards)
       setCards(card.data.cards);
     };
     fetchCard();
@@ -19,7 +18,7 @@ export default function BankCard() {
   return (
     <div>
       {cards.map((card) => (
-        <Card key={card.id} className="max-w-[340px]">
+        <Card key={card.id} className="max-w-[340px] m-2">
           <CardHeader className="justify-between">{card.card_type}</CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
             <span className="pt-2">{card.card_name}</span>

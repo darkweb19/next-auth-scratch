@@ -81,30 +81,30 @@ export async function POST(req: NextRequest) {
       expiryDate, //! "09/26" is date format => from frontend
     }: CardRequest = await req.json();
 
-    // const is_card_exist = await prisma.card.findFirst({
-    // 	where: { card_number: cardNumber },
-    // });
+    const is_card_exist = await prisma.card.findFirst({
+      where: { card_number: cardNumber },
+    });
 
-    // if (is_card_exist?.card_number) {
-    // 	console.log("Card already exists", is_card_exist.card_number);
-    // 	return NextResponse.json({
-    // 		success: false,
-    // 		message: "Card already exists",
-    // 	});
-    // }
+    if (is_card_exist?.card_number) {
+      console.log("Card already exists", is_card_exist.card_number);
+      return NextResponse.json({
+        success: false,
+        message: "Card already exists",
+      });
+    }
 
     //this is for converting date into ISO Standard date since prisma supports this...
-    const [month, year] = "08/26".split("/").map(Number);
+    const [month, year] = expiryDate.split("/").map(Number);
     const date = new Date(Number("20" + year), month - 1);
     const isoStringDate = date.toISOString();
 
     //!adding card into the database
     const card = await prisma.card.create({
       data: {
-        card_name: "Saumya",
-        bank_name: "NIMB",
-        card_number: 78126312, //! hard coded everything for testing purpose
-        card_type: "Credit",
+        card_name: cardName,
+        bank_name: bankName,
+        card_number: cardNumber, //! hard coded everything for testing purpose
+        card_type: cardType,
         expiryDate: isoStringDate,
         user: {
           connect: { id: userid },

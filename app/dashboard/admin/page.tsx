@@ -23,8 +23,6 @@ export default function DashboardPage() {
         This is the middle content area. Hello {user?.username}
       </p>
 
-      <BankCard />
-
       {/* <div className="h-screen">4</div>
 			<div className="h-screen">5</div> */}
     </div>

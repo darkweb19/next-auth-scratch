@@ -1,12 +1,16 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PiSignOutFill } from "react-icons/pi";
 import { TbBrandGoogleAnalytics, TbPigMoney } from "react-icons/tb";
 import { GrTransaction } from "react-icons/gr";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { BsPerson } from "react-icons/bs";
+import BankCard from "@/components/BankCard";
+import { MdAddCircle } from "react-icons/md";
+import AddCardModal from "@/components/AddCardsSide";
 
 export default function RootLayout({
   children,
@@ -14,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+
   const handleLogout = async () => {
     try {
       const response = await axios.get("/api/user/logout");
@@ -109,9 +114,9 @@ export default function RootLayout({
       </main>
 
       {/* Right Sidebar */}
-      <div className="hidden border border-l border-gray-200 sm:block w-1/6 p-4">
-        <h3 className="text-lg font-semibold mb-2">Page Views</h3>
-        <p className="text-gray-600">Total views: 100,000</p>
+      <div className="hidden border border-l border-gray-200 sm:block w-1/6 p-2">
+        <AddCardModal />
+        <BankCard />
       </div>
     </div>
   );
