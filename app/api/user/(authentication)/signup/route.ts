@@ -2,10 +2,11 @@ import prisma from "@/utils/Prisma";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypjs from "bcryptjs";
 import { sendMail } from "@/utils/mailer";
+import { SignupFormData } from "@/utils/interfaces";
 
 export async function POST(req: NextRequest) {
 	try {
-		const { username, email, password } = await req.json();
+		const { username, email, password }: SignupFormData = await req.json();
 
 		//check if the user already exists
 		const user = await prisma.user.findUnique({ where: { email: email } });

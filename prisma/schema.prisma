@@ -21,6 +21,16 @@ model User {
   isVerified Boolean?
   verifyToken String?
   verifyTokenExpiry DateTime?
+  cards Card[]
+}
 
-
+model Card {
+  id        Int     @id @default(autoincrement())
+  card_name String
+  card_number BigInt @unique
+  bank_name String
+  user    User    @relation(fields: [authorId], references: [id])
+  authorId  String
+  card_type String?
+  expiryDate DateTime
 }
