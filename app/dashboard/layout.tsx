@@ -9,7 +9,6 @@ import { GrTransaction } from "react-icons/gr";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { BsPerson } from "react-icons/bs";
 import BankCard from "@/components/BankCard";
-import { MdAddCircle } from "react-icons/md";
 import AddCardModal from "@/components/AddCardsSide";
 
 export default function RootLayout({
