@@ -28,12 +28,13 @@ export default function BankCard() {
 
   // Function to handle card removal
   const handleRemoveCard = async (id: string) => {
- 
     try {
       // Send a request to remove the card from the backend
       await axios.delete(`/api/finance/card/${id}`);
       // Update the local state to remove the card
-      setCards((prevCards) => prevCards.filter((card) => card.id !== id));
+      setCards((prevCards) =>
+        prevCards.filter((card) => card.id !== parseInt(id))
+      );
     } catch (error) {
       console.error("Error removing card:", error);
     }
@@ -45,7 +46,7 @@ export default function BankCard() {
         <Card key={card.id} className="max-w-[340px] m-2">
           <CardHeader className="justify-between">
             {card.card_type}
-            <Button  onClick={() => handleRemoveCard(card.id)}>
+            <Button onClick={() => handleRemoveCard(String(card.id))}>
               <IoRemoveCircle />
             </Button>
           </CardHeader>

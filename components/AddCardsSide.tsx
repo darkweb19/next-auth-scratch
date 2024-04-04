@@ -14,6 +14,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
+
+
 export default function AddCardModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [cardFormData, setCardFormData] = useState({
@@ -23,7 +25,7 @@ export default function AddCardModal() {
     name: "", // Add the name field to the state
   });
 
-  const handleCardFormChange = (e) => {
+  const handleCardFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCardFormData((prevData) => ({
       ...prevData,
@@ -31,18 +33,18 @@ export default function AddCardModal() {
     }));
   };
 
-  const handleCardFormSubmit = async(e) => {
+  const handleCardFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-   try {
-     // Send a POST request to your backend API endpoint
-     const response = await axios.post("/api/finance/card", cardFormData);
-     console.log("Response from server:", response.data);
-     // Optionally, close the modal after successful submission
-     onClose();
-   } catch (error) {
-     console.error("Error submitting form:", error);
-     // Handle error accordingly, display a message to the user, etc.
-   }
+    try {
+      // Send a POST request to your backend API endpoint
+      const response = await axios.post("/api/finance/card", cardFormData);
+      console.log("Response from server:", response.data);
+      // Optionally, close the modal after successful submission
+      onClose();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error accordingly, display a message to the user, etc.
+    }
   };
 
   return (
