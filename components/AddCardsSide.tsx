@@ -14,16 +14,15 @@ import { useState } from "react";
 
 import axios from "axios";
 
-
-
 export default function AddCardModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [cardFormData, setCardFormData] = useState({
-    cardType: "",
-    cardName: "",
+    card_type: "",
+    card_name: "",
     expiryDate: "",
     name: "",
-    bankName:"",
+    bank_name: "",
+    card_number:""
   });
 
   const handleCardFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,8 +68,8 @@ export default function AddCardModal() {
                   Name:
                   <Input
                     type="text"
-                    name="name"
-                    value={cardFormData.name}
+                    name="card_name"
+                    value={cardFormData.card_name}
                     onChange={handleCardFormChange}
                     required
                   />
@@ -79,18 +78,8 @@ export default function AddCardModal() {
                   Bank Name:
                   <Input
                     type="text"
-                    name="bankName"
-                    value={cardFormData.bankName}
-                    onChange={handleCardFormChange}
-                    required
-                  />
-                </Label>
-                <Label>
-                  Card Type:
-                  <Input
-                    type="text"
-                    name="cardType"
-                    value={cardFormData.cardType}
+                    name="bank_name"
+                    value={cardFormData.bank_name}
                     onChange={handleCardFormChange}
                     required
                   />
@@ -99,8 +88,18 @@ export default function AddCardModal() {
                   Card Number:
                   <Input
                     type="Number"
-                    name="cardName"
-                    value={cardFormData.cardName}
+                    name="card_number"
+                    value={cardFormData.card_number}
+                    onChange={handleCardFormChange}
+                    required
+                  />
+                </Label>
+                <Label>
+                  Card Type:
+                  <Input
+                    type="text"
+                    name="card_type"
+                    value={cardFormData.card_type}
                     onChange={handleCardFormChange}
                     required
                   />
