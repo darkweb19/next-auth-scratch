@@ -22,7 +22,8 @@ export default function AddCardModal() {
     cardType: "",
     cardName: "",
     expiryDate: "",
-    name: "", // Add the name field to the state
+    name: "",
+    bankName:"",
   });
 
   const handleCardFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,6 +71,16 @@ export default function AddCardModal() {
                     type="text"
                     name="name"
                     value={cardFormData.name}
+                    onChange={handleCardFormChange}
+                    required
+                  />
+                </Label>
+                <Label>
+                  Bank Name:
+                  <Input
+                    type="text"
+                    name="bankName"
+                    value={cardFormData.bankName}
                     onChange={handleCardFormChange}
                     required
                   />
