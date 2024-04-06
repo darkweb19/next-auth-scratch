@@ -17,13 +17,13 @@ import axios from "axios";
 export default function AddCardModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [cardFormData, setCardFormData] = useState({
-    card_type: "",
-    card_name: "",
+    cardName: "",
+    cardNumber: "",
+    cardType: "",
+    bankName: "",
     expiryDate: "",
-    name: "",
-    bank_name: "",
-    card_number:""
   });
+  const [cards, setCards] = useState([]); // State to hold all cards
 
   const handleCardFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -68,8 +68,8 @@ export default function AddCardModal() {
                   Name:
                   <Input
                     type="text"
-                    name="card_name"
-                    value={cardFormData.card_name}
+                    name="cardName"
+                    value={cardFormData.cardName}
                     onChange={handleCardFormChange}
                     required
                   />
@@ -78,8 +78,8 @@ export default function AddCardModal() {
                   Bank Name:
                   <Input
                     type="text"
-                    name="bank_name"
-                    value={cardFormData.bank_name}
+                    name="bankName"
+                    value={cardFormData.bankName}
                     onChange={handleCardFormChange}
                     required
                   />
@@ -88,8 +88,8 @@ export default function AddCardModal() {
                   Card Number:
                   <Input
                     type="Number"
-                    name="card_number"
-                    value={cardFormData.card_number}
+                    name="cardNumber"
+                    value={cardFormData.cardNumber}
                     onChange={handleCardFormChange}
                     required
                   />
@@ -98,8 +98,8 @@ export default function AddCardModal() {
                   Card Type:
                   <Input
                     type="text"
-                    name="card_type"
-                    value={cardFormData.card_type}
+                    name="cardType"
+                    value={cardFormData.cardType}
                     onChange={handleCardFormChange}
                     required
                   />
