@@ -21,6 +21,53 @@ model User {
   isVerified Boolean?
   verifyToken String?
   verifyTokenExpiry DateTime?
+  cards Card[]
+  bank_detail   BankDetails[]
+  transactions Transaction?
+  
+}
+
+model Card {
+  id        Int     @id @default(autoincrement())
+  card_name String
+  card_number BigInt @unique
+  bank_name String
+  user    User    @relation(fields: [authorId], references: [id])
+  authorId  String
+  card_type String?
+  expiryDate DateTime
+}
+
+model BankDetails {
+  id          String      @id @default(uuid())
+  bank_name   String
+  bank_branch String?
+  bank_balance Int 
+  acc_number  BigInt @unique
+  acc_type    String
+  open_date   DateTime    @default(now())
+  user        User      @relation(fields: [user_id], references: [id])
+  user_id     String 
+}
 
 
+model Transaction {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [authorId] ,references: [id])
+  authorId  String @unique
+  transaction_type TransactionType? 
+  trans_amount Int
+  merchant_username String 
+  merchant_acc_number Int
+  merchant_bank_info String
+  remarks String?
+  category String?
+  trans_date DateTime
+}
+
+
+enum TransactionType {
+  PURCHASE
+  DEPOSIT
+  WITHDRAW
 }

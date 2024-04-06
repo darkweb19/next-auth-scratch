@@ -1,4 +1,5 @@
 "use client";
+
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -24,11 +25,8 @@ export default function DashboardPage() {
 				This is the middle content area. Hello {user?.username}
 			</p>
 
-			<div className="h-screen">3</div>
 			<div className="h-screen">4</div>
 			<div className="h-screen">5</div>
-			<div className="h-screen">7</div>
-			<div className="h-screen">8</div>
 		</div>
 	);
 }

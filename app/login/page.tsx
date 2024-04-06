@@ -6,11 +6,12 @@ import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { LoginFormData } from "@/utils/interfaces";
 
 export default function LoginPage() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<LoginFormData>({
 		email: "",
 		password: "",
 	});
