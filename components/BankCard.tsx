@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { IoRemoveCircle } from "react-icons/io5";
+import { MdDeleteOutline } from "react-icons/md";
 
 export default function BankCard() {
 	const [cards, setCards] = useState<Cards[]>([]);
@@ -49,11 +49,15 @@ export default function BankCard() {
 						<CardHeader className="justify-between">
 							{card.card_type}
 							<Button
+								color="danger"
+								size="sm"
 								onClick={() =>
 									handleRemoveCard(String(card.card_number))
 								}
 							>
-								<IoRemoveCircle />
+								<span className="text-xl">
+									<MdDeleteOutline />
+								</span>
 							</Button>
 						</CardHeader>
 						<CardBody className="px-3 py-0 text-small text-default-400">

@@ -17,6 +17,7 @@ import toast from "react-hot-toast";
 
 export default function AddCardModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [loading, setLoading] = useState(false);
 	const [cardFormData, setCardFormData] = useState({
 		cardName: "",
 		cardNumber: "",
@@ -39,6 +40,7 @@ export default function AddCardModal() {
 		e.preventDefault();
 		try {
 			// Send a POST request to your backend API endpoint
+			setLoading(true);
 			const response = await axios.post(
 				"/api/finance/card",
 				cardFormData
@@ -62,6 +64,7 @@ export default function AddCardModal() {
 				bankName: "",
 				expiryDate: "",
 			});
+			setLoading(false);
 		}
 	};
 
@@ -71,9 +74,13 @@ export default function AddCardModal() {
 				<h1 className="text-lg font-medium">My Cards</h1>
 				<span className="text-xl">
 					<div className="flex flex-wrap gap-3"></div>
-					<Button className="w-fit" onClick={onOpen}>
-						<MdAddCircle />
-					</Button>
+
+					<span className="text-2xl">
+						<MdAddCircle
+							className="mt-1 cursor-pointer"
+							onClick={onOpen}
+						/>
+					</span>
 				</span>
 				<Modal isOpen={isOpen} onClose={onClose}>
 					<ModalContent>
@@ -133,7 +140,9 @@ export default function AddCardModal() {
 									/>
 								</Label>
 								<br />
-								<Button type="submit">Submit</Button>
+								<Button type="submit" isLoading={loading}>
+									Submit
+								</Button>
 							</form>
 						</ModalBody>
 						<ModalFooter>
