@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
 	const isProtectedPath =
 		path === "/dashboard" || path.startsWith("/dashboard");
 	if (isPublicPath && token !== "")
-		return NextResponse.redirect(new URL("/dashboard", request.url));
+		return NextResponse.redirect(new URL("/dashboard/admin", request.url));
 	if (isProtectedPath && token === "")
 		return NextResponse.redirect(new URL("/", request.url));
 }

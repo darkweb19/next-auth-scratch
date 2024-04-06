@@ -31,7 +31,7 @@ export default function LoginPage() {
 			const response = await axios.post("/api/user/login", formData);
 			if (response.data.success) {
 				toast.success("Login Success");
-				router.push("/dashboard");
+				router.push("/dashboard/admin");
 			} else {
 				toast.error(response.data.message);
 			}
