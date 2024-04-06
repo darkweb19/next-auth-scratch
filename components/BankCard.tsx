@@ -33,9 +33,9 @@ export default function BankCard() {
 			await axios.delete(`/api/finance/card/${id}`);
 			// Update the local state to remove the card
 			console.log("Card removed");
-			setCards((prevCards) =>
-				prevCards.filter((card) => card.id !== parseInt(id))
-			);
+			// Re-fetch the card data after deletion
+			const response = await axios.get("/api/finance/card");
+			setCards(response.data.cards);
 		} catch (error) {
 			console.error("Error removing card:", error);
 		}
