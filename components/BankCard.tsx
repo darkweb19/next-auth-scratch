@@ -24,7 +24,7 @@ export default function BankCard() {
 			}
 		};
 		fetchCard();
-	}, [cards]);
+	}, []);
 
 	// Function to handle card removal
 	const handleRemoveCard = async (id: string) => {
