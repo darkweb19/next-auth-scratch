@@ -1,7 +1,9 @@
+import { InvestmentsPage } from "@/components/investments-page";
+
 export default function InvestPage() {
 	return (
-		<div className="w-2/3 p-4">
-			<p className="">Investments page</p>
+		<div className="w-full">
+			<InvestmentsPage />
 		</div>
 	);
 }

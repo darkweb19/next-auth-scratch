@@ -18,13 +18,12 @@ export default function AdminPage() {
 	}, []);
 
 	return (
-		<div className="p-4 ">
-			<h2 className="text-xl font-semibold mb-4">
-				Welcome to the Dashboard
-			</h2>
-			<p className="text-gray-600">
-				This is the middle content area. Hello {user?.username}
-			</p>
+		<div className="p-2">
+			<div className="mt-3">
+				<h2 className="text-xl font-semibold ml-4">
+					Welcome back {user?.username},
+				</h2>
+			</div>
 			<Dashboard />
 		</div>
 	);

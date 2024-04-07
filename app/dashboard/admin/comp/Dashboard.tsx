@@ -3,6 +3,7 @@ import ExpensesCard from "./ExpensesCard";
 import SalesCards from "./SalesCard";
 import AssestsCard from "./AssestsCard";
 import TransactionCard from "./TransactionCards";
+import { OverviewInvest } from "@/components/overview-invest";
 
 export function Dashboard() {
 	return (
@@ -15,6 +16,7 @@ export function Dashboard() {
 
 					<AssestsCard />
 				</div>
+				<OverviewInvest />
 				<TransactionCard />
 			</main>
 		</div>
