@@ -65,13 +65,13 @@ export default function BankCard() {
 						</CardHeader>
 						<CardBody className="px-3 py-0 text-small text-default-400">
 							<span className="pt-2">{card.card_name}</span>
-						</CardBody>
-						<CardFooter className="gap-3">
-							<div className="flex gap-1">
+							<div className="flex gap-1 mt-1">
 								<p className="font-semibold text-default-400 text-small">
 									{card.card_number}
 								</p>
 							</div>
+						</CardBody>
+						<CardFooter className="gap-3">
 							<div className="flex gap-1">
 								<p className="font-semibold text-default-400 text-small">
 									Expiry date: {card.expiryDate}
