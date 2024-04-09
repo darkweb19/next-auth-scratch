@@ -14,7 +14,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { ResponsiveBar } from "@nivo/bar";
 import { ResponsivePie } from "@nivo/pie";
-import { ResponsiveLine } from "@nivo/line";
 import { ClassAttributes, HTMLAttributes, JSX, SVGProps } from "react";
 
 export function AnalyticsPage() {
@@ -23,7 +22,9 @@ export function AnalyticsPage() {
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
-						<CardDescription>Assets</CardDescription>
+						<CardDescription className="text-xl font-medium">
+							Assets
+						</CardDescription>
 						<CardTitle>$2389.00</CardTitle>
 					</div>
 					<Button
@@ -42,7 +43,9 @@ export function AnalyticsPage() {
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
-						<CardDescription>Income</CardDescription>
+						<CardDescription className="text-xl font-medium">
+							Income
+						</CardDescription>
 						<CardTitle>$2389.00</CardTitle>
 					</div>
 					<Button
@@ -61,7 +64,9 @@ export function AnalyticsPage() {
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
-						<CardDescription>Expenses</CardDescription>
+						<CardDescription className="text-xl font-medium">
+							Expenses
+						</CardDescription>
 						<CardTitle>$2389.00</CardTitle>
 					</div>
 					<Button
@@ -74,13 +79,15 @@ export function AnalyticsPage() {
 					</Button>
 				</CardHeader>
 				<CardContent className="flex items-center justify-center h-[200px]">
-					<LineChart className="h-[200px] aspect-video" />
+					<InnerPieChart className="h-[200px] aspect-video" />
 				</CardContent>
 			</Card>
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
-						<CardDescription>Liabilities</CardDescription>
+						<CardDescription className="text-xl font-medium">
+							Liabilities
+						</CardDescription>
 						<CardTitle>$2389.00</CardTitle>
 					</div>
 					<Button
@@ -99,7 +106,9 @@ export function AnalyticsPage() {
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
-						<CardDescription>Other Investments</CardDescription>
+						<CardDescription className="text-xl font-medium">
+							Other Investments
+						</CardDescription>
 						<CardTitle>$2389.00</CardTitle>
 					</div>
 					<Button
@@ -249,78 +258,160 @@ function PieChart(
 	);
 }
 
-function LineChart(
+function InnerPieChart(
 	props: JSX.IntrinsicAttributes &
 		ClassAttributes<HTMLDivElement> &
 		HTMLAttributes<HTMLDivElement>
 ) {
 	return (
 		<div {...props}>
-			<ResponsiveLine
+			<ResponsivePie
 				data={[
 					{
-						id: "Desktop",
-						data: [
-							{ x: "Jan", y: 43 },
-							{ x: "Feb", y: 137 },
-							{ x: "Mar", y: 61 },
-							{ x: "Apr", y: 145 },
-							{ x: "May", y: 26 },
-							{ x: "Jun", y: 154 },
-						],
+						id: "lisp",
+						label: "lisp",
+						value: 394,
+						color: "hsl(170, 70%, 50%)",
 					},
 					{
-						id: "Mobile",
-						data: [
-							{ x: "Jan", y: 60 },
-							{ x: "Feb", y: 48 },
-							{ x: "Mar", y: 177 },
-							{ x: "Apr", y: 78 },
-							{ x: "May", y: 96 },
-							{ x: "Jun", y: 204 },
+						id: "stylus",
+						label: "stylus",
+						value: 182,
+						color: "hsl(193, 70%, 50%)",
+					},
+					{
+						id: "php",
+						label: "php",
+						value: 318,
+						color: "hsl(74, 70%, 50%)",
+					},
+					{
+						id: "elixir",
+						label: "elixir",
+						value: 91,
+						color: "hsl(238, 70%, 50%)",
+					},
+					{
+						id: "python",
+						label: "python",
+						value: 454,
+						color: "hsl(252, 70%, 50%)",
+					},
+				]}
+				margin={{ top: 30, right: 70, bottom: 80, left: 20 }}
+				innerRadius={0.5}
+				padAngle={0.9}
+				cornerRadius={5}
+				activeOuterRadiusOffset={9}
+				borderWidth={1}
+				borderColor={{
+					from: "color",
+					modifiers: [["darker", 0.2]],
+				}}
+				arcLinkLabelsSkipAngle={10}
+				arcLinkLabelsTextColor="#333333"
+				arcLinkLabelsThickness={2}
+				arcLinkLabelsColor={{ from: "color" }}
+				arcLabelsSkipAngle={10}
+				arcLabelsTextColor={{
+					from: "color",
+					modifiers: [["darker", 2]],
+				}}
+				defs={[
+					{
+						id: "dots",
+						type: "patternDots",
+						background: "inherit",
+						color: "rgba(255, 255, 255, 0.3)",
+						size: 4,
+						padding: 1,
+						stagger: true,
+					},
+					{
+						id: "lines",
+						type: "patternLines",
+						background: "inherit",
+						color: "rgba(255, 255, 255, 0.3)",
+						rotation: -45,
+						lineWidth: 6,
+						spacing: 10,
+					},
+				]}
+				fill={[
+					{
+						match: {
+							id: "ruby",
+						},
+						id: "dots",
+					},
+					{
+						match: {
+							id: "c",
+						},
+						id: "dots",
+					},
+					{
+						match: {
+							id: "go",
+						},
+						id: "dots",
+					},
+					{
+						match: {
+							id: "python",
+						},
+						id: "dots",
+					},
+					{
+						match: {
+							id: "scala",
+						},
+						id: "lines",
+					},
+					{
+						match: {
+							id: "lisp",
+						},
+						id: "lines",
+					},
+					{
+						match: {
+							id: "elixir",
+						},
+						id: "lines",
+					},
+					{
+						match: {
+							id: "javascript",
+						},
+						id: "lines",
+					},
+				]}
+				legends={[
+					{
+						anchor: "bottom",
+						direction: "row",
+						justify: false,
+						translateX: 0,
+						translateY: 56,
+						itemsSpacing: 0,
+						itemWidth: 100,
+						itemHeight: 18,
+						itemTextColor: "#999",
+						itemDirection: "left-to-right",
+						itemOpacity: 1,
+						symbolSize: 18,
+						symbolShape: "circle",
+						effects: [
+							{
+								on: "hover",
+								style: {
+									itemTextColor: "#000",
+								},
+							},
 						],
 					},
 				]}
-				margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-				xScale={{
-					type: "point",
-				}}
-				yScale={{
-					type: "linear",
-				}}
-				axisTop={null}
-				axisRight={null}
-				axisBottom={{
-					tickSize: 0,
-					tickPadding: 16,
-				}}
-				axisLeft={{
-					tickSize: 0,
-					tickValues: 5,
-					tickPadding: 16,
-				}}
-				colors={["#2563eb", "#e11d48"]}
-				pointSize={6}
-				useMesh={true}
-				gridYValues={6}
-				theme={{
-					tooltip: {
-						chip: {
-							borderRadius: "9999px",
-						},
-						container: {
-							fontSize: "12px",
-							textTransform: "capitalize",
-							borderRadius: "6px",
-						},
-					},
-					grid: {
-						line: {
-							stroke: "#f3f4f6",
-						},
-					},
-				}}
-				role="application"
 			/>
 		</div>
 	);

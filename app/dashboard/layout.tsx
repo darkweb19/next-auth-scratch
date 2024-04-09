@@ -28,8 +28,8 @@ export default function RootLayout({
 	return (
 		<div className="flex flex-col sm:flex-row h-full ">
 			{/* Left Sidebar */}
-			<div className="sm:w-1/6 sm:h-full border-r  flex-col justify-between border-gray-200 text-black p-3 hidden sm:block">
-				<div className="p-3">
+			<div className="md:w-1/6 sm:h-full border-r  flex-col items-center gap-3 font-medium justify-between border-gray-200 text-black p-3 hidden sm:flex">
+				<div className="p-3 ">
 					<h1 className="text-lg px-3 py-1 text-start font-medium ">
 						Dashboard
 					</h1>
@@ -93,7 +93,7 @@ export default function RootLayout({
 						</li>
 					</ul>
 				</div>
-				<div className=" p-2 mb-20 ">
+				<div className=" p-2  mb-20 ">
 					<button
 						onClick={handleLogout}
 						className="w-full p-2 rounded-md flex items-center justify-start gap-3 hover:bg-slate-100 focus:outline-none"
