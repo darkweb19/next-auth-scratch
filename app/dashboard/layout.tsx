@@ -26,9 +26,9 @@ export default function RootLayout({
 		}
 	};
 	return (
-		<div className="flex h-full ">
+		<div className="flex flex-col sm:flex-row h-full ">
 			{/* Left Sidebar */}
-			<div className="w-2/6 sm:w-1/6 h-full border-r flex flex-col justify-between border-gray-200 text-black p-3">
+			<div className="sm:w-1/6 sm:h-full border-r  flex-col justify-between border-gray-200 text-black p-3 hidden sm:block">
 				<div className="p-3">
 					<h1 className="text-lg px-3 py-1 text-start font-medium ">
 						Dashboard

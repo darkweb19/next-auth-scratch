@@ -1,9 +1,9 @@
 "use client";
 
 import { User } from "@prisma/client";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Dashboard } from "./comp/Dashboard";
+import { getLoggedInUser } from "@/lib/getUser";
 
 export default function AdminPage() {
 	//get user from the server
@@ -11,11 +11,8 @@ export default function AdminPage() {
 
 	useEffect(() => {
 		const getUser = async () => {
-			const response = await fetch("/api/user");
-			const user = await response.json();
-
-			setUser(user.userinDb);
-			console.log(user.userinDb);
+			const logInUser = await getLoggedInUser();
+			setUser(logInUser as User);
 		};
 		getUser();
 	}, []);

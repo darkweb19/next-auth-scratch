@@ -12,7 +12,8 @@ import { MdDeleteOutline } from "react-icons/md";
 
 export default function BankCard() {
 	const [cards, setCards] = useState<Cards[]>([]);
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
+	const [loadingIds, setLoadingIds] = useState<string[]>([]);
 
 	useEffect(() => {
 		// Fetch card data from backend
@@ -35,7 +36,7 @@ export default function BankCard() {
 	// Function to handle card removal
 	const handleRemoveCard = async (id: string) => {
 		try {
-			setLoading(true);
+			setLoadingIds([...loadingIds, id]);
 			// Send a request to remove the card from the backend
 			await axios.delete(`/api/finance/card/${id}`);
 			// Update the local state to remove the card
@@ -45,6 +46,9 @@ export default function BankCard() {
 			setCards(response.data.cards);
 		} catch (error) {
 			console.error("Error removing card:", error);
+		} finally {
+			// Remove the card ID from loadingIds array to unset loading state for this card
+			setLoadingIds(loadingIds.filter((loadingId) => loadingId !== id));
 		}
 	};
 
@@ -58,7 +62,9 @@ export default function BankCard() {
 							<Button
 								color="danger"
 								size="sm"
-								isLoading={loading}
+								isLoading={loadingIds.includes(
+									String(card.card_number)
+								)}
 								onClick={() =>
 									handleRemoveCard(String(card.card_number))
 								}
