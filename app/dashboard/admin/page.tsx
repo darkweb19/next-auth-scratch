@@ -6,13 +6,16 @@ import { useEffect, useState } from "react";
 import { Dashboard } from "./comp/Dashboard";
 
 export default function AdminPage() {
+	//get user from the server
 	const [user, setUser] = useState<User>();
 
 	useEffect(() => {
 		const getUser = async () => {
-			const response = await axios.get("/api/user");
-			const user: User = response.data.userinDb;
-			setUser(user);
+			const response = await fetch("/api/user");
+			const user = await response.json();
+
+			setUser(user.userinDb);
+			console.log(user.userinDb);
 		};
 		getUser();
 	}, []);
