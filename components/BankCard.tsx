@@ -18,8 +18,13 @@ export default function BankCard() {
 		// Fetch card data from backend
 		const fetchCard = async () => {
 			try {
-				const response = await axios.get("/api/finance/card");
-				setCards(response.data.cards);
+				// const response = await axios.get("/ap
+				const response = await fetch("/api/finance/card", {
+					cache: "no-store",
+				});
+				const cards = await response.json();
+				console.log(cards.cards);
+				setCards(cards.cards);
 			} catch (error) {
 				console.error("Error fetching card data:", error);
 			}
