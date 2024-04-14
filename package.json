@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
     "@nivo/bar": "^0.85.1",
+    "@nivo/bump": "^0.85.1",
     "@nivo/line": "^0.85.1",
     "@nivo/pie": "^0.85.1",
     "@prisma/client": "^5.11.0",

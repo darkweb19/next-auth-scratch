@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ResponsiveBar } from "@nivo/bar";
 import { ResponsivePie } from "@nivo/pie";
+import { ResponsiveBump } from "@nivo/bump";
 import { ClassAttributes, HTMLAttributes, JSX, SVGProps } from "react";
 
 export function AnalyticsPage() {
@@ -25,7 +26,7 @@ export function AnalyticsPage() {
 						<CardDescription className="text-xl font-medium">
 							Assets
 						</CardDescription>
-						<CardTitle>$2389.00</CardTitle>
+						<CardTitle>$10909.00</CardTitle>
 					</div>
 					<Button
 						className="ml-auto h-8 w-8"
@@ -46,7 +47,7 @@ export function AnalyticsPage() {
 						<CardDescription className="text-xl font-medium">
 							Income
 						</CardDescription>
-						<CardTitle>$2389.00</CardTitle>
+						<CardTitle>$4803.00</CardTitle>
 					</div>
 					<Button
 						className="ml-auto h-8 w-8"
@@ -88,7 +89,7 @@ export function AnalyticsPage() {
 						<CardDescription className="text-xl font-medium">
 							Liabilities
 						</CardDescription>
-						<CardTitle>$2389.00</CardTitle>
+						<CardTitle>$89.00</CardTitle>
 					</div>
 					<Button
 						className="ml-auto h-8 w-8"
@@ -103,13 +104,14 @@ export function AnalyticsPage() {
 					<BarChart className="h-[200px] aspect-video" />
 				</CardContent>
 			</Card>
+
 			<Card>
 				<CardHeader className="flex items-center gap-4">
 					<div className="flex flex-col">
 						<CardDescription className="text-xl font-medium">
 							Other Investments
 						</CardDescription>
-						<CardTitle>$2389.00</CardTitle>
+						<CardTitle>$331.00</CardTitle>
 					</div>
 					<Button
 						className="ml-auto h-8 w-8"
@@ -121,7 +123,7 @@ export function AnalyticsPage() {
 					</Button>
 				</CardHeader>
 				<CardContent className="flex items-center justify-center h-[200px]">
-					<BarChart className="h-[200px] aspect-video" />
+					<BumpChart className="h-[200px] aspect-video " />
 				</CardContent>
 			</Card>
 		</div>
@@ -253,6 +255,112 @@ function PieChart(
 					},
 				}}
 				role="application"
+			/>
+		</div>
+	);
+}
+
+function BumpChart(
+	props: JSX.IntrinsicAttributes &
+		ClassAttributes<HTMLDivElement> &
+		HTMLAttributes<HTMLDivElement>
+) {
+	return (
+		<div {...props}>
+			<ResponsiveBump
+				data={[
+					{
+						id: "Serie 1",
+						data: [
+							{
+								x: 2000,
+								y: 11,
+							},
+							{
+								x: 2001,
+								y: 8,
+							},
+							{
+								x: 2002,
+								y: 12,
+							},
+							{
+								x: 2003,
+								y: 7,
+							},
+							{
+								x: 2004,
+								y: 9,
+							},
+						],
+					},
+					{
+						id: "Serie 2",
+						data: [
+							{
+								x: 2000,
+								y: 7,
+							},
+							{
+								x: 2001,
+								y: 3,
+							},
+							{
+								x: 2002,
+								y: 3,
+							},
+							{
+								x: 2003,
+								y: 10,
+							},
+							{
+								x: 2004,
+								y: 1,
+							},
+						],
+					},
+				]}
+				colors={{ scheme: "spectral" }}
+				lineWidth={3}
+				activeLineWidth={6}
+				inactiveLineWidth={3}
+				inactiveOpacity={0.15}
+				pointSize={10}
+				activePointSize={16}
+				inactivePointSize={0}
+				pointColor={{ theme: "background" }}
+				pointBorderWidth={3}
+				activePointBorderWidth={3}
+				pointBorderColor={{ from: "serie.color" }}
+				axisTop={{
+					tickSize: 5,
+					tickPadding: 5,
+					tickRotation: 0,
+					legend: "",
+					legendPosition: "middle",
+					legendOffset: -36,
+					truncateTickAt: 0,
+				}}
+				axisBottom={{
+					tickSize: 5,
+					tickPadding: 5,
+					tickRotation: 0,
+					legend: "",
+					legendPosition: "middle",
+					legendOffset: 32,
+					truncateTickAt: 0,
+				}}
+				axisLeft={{
+					tickSize: 5,
+					tickPadding: 5,
+					tickRotation: 0,
+					legend: "ranking",
+					legendPosition: "middle",
+					legendOffset: -40,
+					truncateTickAt: 0,
+				}}
+				margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
+				axisRight={null}
 			/>
 		</div>
 	);
