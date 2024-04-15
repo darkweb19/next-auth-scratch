@@ -1,3 +1,4 @@
+"use client";
 import {
 	Modal,
 	ModalContent,
@@ -11,9 +12,9 @@ import { MdAddCircle } from "react-icons/md";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-
 import axios from "axios";
 import toast from "react-hot-toast";
+import useSWR from "swr";
 
 export default function AddCardModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,6 +26,12 @@ export default function AddCardModal() {
 		bankName: "",
 		expiryDate: "",
 	});
+
+	const fetcher = async (url: string) => {
+		const response = await fetch(url, { cache: "no-store" });
+		return await response.json();
+	};
+	const { data, error, mutate } = useSWR("/api/finance/card", fetcher);
 
 	const handleCardFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -48,6 +55,7 @@ export default function AddCardModal() {
 			console.log("Response from server:", response.data.success);
 			if (response.data.success) {
 				toast.success("Card added successfully");
+				mutate();
 			} else {
 				toast.error(`Error adding card : ${response.data.message}`);
 			}
