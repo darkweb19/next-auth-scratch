@@ -41,42 +41,43 @@ export default function BankCard() {
 
 	return (
 		<div>
-			{cards?.cards.map((card: Cards) => (
-				<Card key={card.id} className="max-w-[340px] m-2">
-					<CardHeader className="justify-between">
-						{card.card_type}
-						<Button
-							color="danger"
-							size="sm"
-							isLoading={loadingIds.includes(
-								String(card.card_number)
-							)}
-							onClick={() =>
-								handleRemoveCard(String(card.card_number))
-							}
-						>
-							<span className="text-xl">
-								<MdDeleteOutline />
-							</span>
-						</Button>
-					</CardHeader>
-					<CardBody className="px-3 py-0 text-small text-default-400">
-						<span className="pt-2">{card.card_name}</span>
-						<div className="flex gap-1 mt-1">
-							<p className="font-semibold text-default-400 text-small">
-								{card.card_number}
-							</p>
-						</div>
-					</CardBody>
-					<CardFooter className="gap-3">
-						<div className="flex gap-1">
-							<p className="font-semibold text-default-400 text-small">
-								Expiry date: {card.expiryDate}
-							</p>
-						</div>
-					</CardFooter>
-				</Card>
-			))}
+			{cards &&
+				cards?.cards.map((card: Cards) => (
+					<Card key={card.id} className="max-w-[340px] m-2">
+						<CardHeader className="justify-between">
+							{card.card_type}
+							<Button
+								color="danger"
+								size="sm"
+								isLoading={loadingIds.includes(
+									String(card.card_number)
+								)}
+								onClick={() =>
+									handleRemoveCard(String(card.card_number))
+								}
+							>
+								<span className="text-xl">
+									<MdDeleteOutline />
+								</span>
+							</Button>
+						</CardHeader>
+						<CardBody className="px-3 py-0 text-small text-default-400">
+							<span className="pt-2">{card.card_name}</span>
+							<div className="flex gap-1 mt-1">
+								<p className="font-semibold text-default-400 text-small">
+									{card.card_number}
+								</p>
+							</div>
+						</CardBody>
+						<CardFooter className="gap-3">
+							<div className="flex gap-1">
+								<p className="font-semibold text-default-400 text-small">
+									Expiry date: {card.expiryDate}
+								</p>
+							</div>
+						</CardFooter>
+					</Card>
+				))}
 		</div>
 	);
 }
