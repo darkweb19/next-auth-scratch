@@ -42,6 +42,7 @@ export default function BankCard() {
 	return (
 		<div>
 			{cards &&
+				cards.cards &&
 				cards?.cards.map((card: Cards) => (
 					<Card key={card.id} className="max-w-[340px] m-2">
 						<CardHeader className="justify-between">
