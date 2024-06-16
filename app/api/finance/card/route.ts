@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
 		const card = await prisma.card.findMany({
 			where: { authorId: userid },
 		});
-		console.log(card);
+		// console.log(card);
 
 		//! since card number is BigInt , while fetching it shows error : So we convert it to string
 		const serializedCards = card.map((card) => ({
