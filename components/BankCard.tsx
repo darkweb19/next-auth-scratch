@@ -39,6 +39,16 @@ export default function BankCard() {
 
 	if (error) return <div>Error fetching data {error}</div>;
 
+	if (cards && cards.cards.length === 0)
+		return <div className="text-red-700">No cards found</div>;
+
+	if (!cards)
+		return (
+			<div className="flex justify-center items-center mt-10">
+				<div className="w-6 h-6 border-4 border-t-transparent border-blue-500 border-solid rounded-full animate-spin"></div>
+			</div>
+		);
+
 	return (
 		<div>
 			{cards &&

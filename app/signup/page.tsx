@@ -93,8 +93,20 @@ export default function SignUpForm() {
 				<br />
 
 				<Button type="submit">
-					{loading ? "adding..." : "signup"}
+					{loading ? (
+						<div className="flex justify-center items-center mt-10">
+							<div className="w-6 h-6 border-4 border-t-transparent border-blue-500 border-solid rounded-full animate-spin"></div>
+						</div>
+					) : (
+						"signup"
+					)}
 				</Button>
+				<p className="mt-4 text-center text-sm">
+					Already have an account?{" "}
+					<a href="/login" className="text-blue-500 hover:underline">
+						Login here
+					</a>
+				</p>
 			</form>
 		</div>
 	);
